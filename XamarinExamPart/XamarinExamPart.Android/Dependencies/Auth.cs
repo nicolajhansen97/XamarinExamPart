@@ -60,8 +60,8 @@ namespace XamarinExamPart.Droid.Dependencies
             {
                 await FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(email, password);
 
-                FirebaseUser currentUser = FirebaseAuth.Instance.CurrentUser;
-                currentUser.SendEmailVerification();
+         //       FirebaseUser currentUser = FirebaseAuth.Instance.CurrentUser;
+         //       currentUser.SendEmailVerification();
 
                 return true;
             }
