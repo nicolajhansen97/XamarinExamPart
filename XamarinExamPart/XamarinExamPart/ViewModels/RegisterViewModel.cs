@@ -5,6 +5,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using XamarinExamPart.Helpers;
 
+//Made by Nicolaj
 namespace XamarinExamPart.ViewModels
 {
     class RegisterViewModel : BaseViewModel
@@ -52,6 +53,8 @@ namespace XamarinExamPart.ViewModels
 
         }
 
+        //Here we register the users. We check if any entries are empty, then we check if the vertificationCode is allowed. We call Firebase to register the user, if the result
+        // return true then we are registred and we change the view.
         async void Register()
         {
 

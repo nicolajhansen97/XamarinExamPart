@@ -6,6 +6,7 @@ using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
+//Made by Nicolaj
 namespace XamarinExamPart.ViewModels
 {
     class CameraPageViewModel : BaseViewModel
@@ -47,11 +48,13 @@ namespace XamarinExamPart.ViewModels
             ChangeToBarcodeCommand = new Command(ChangeToBarcode);
         }
 
+        //Changes view
         async void ChangeToBarcode()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new BarcodeScanPage());
         }
 
+        //This function allows us through Mediapicker which is a part of Essentials, that we can choose a Photo. This will be done through ImageSource.
         async void PickImage()
         {
 
@@ -70,6 +73,7 @@ namespace XamarinExamPart.ViewModels
 
         }
 
+        //TakeImage is also through Mediapicker, it works almost in the same way, the different here is that we take a photo.
         async void TakeImage()
         {
             var result = await MediaPicker.CapturePhotoAsync();

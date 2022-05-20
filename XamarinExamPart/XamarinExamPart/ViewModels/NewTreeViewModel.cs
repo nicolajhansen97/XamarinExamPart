@@ -5,6 +5,8 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
+//Made by Nicolaj
+
 namespace XamarinExamPart.ViewModels
 {
     class NewTreeViewModel : BaseViewModel
