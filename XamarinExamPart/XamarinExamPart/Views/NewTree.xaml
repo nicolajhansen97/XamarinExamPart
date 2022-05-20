@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinExamPart.Views.NewTree"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout
+        Margin="15"
+        VerticalOptions="Center">
+
+        <Image x:Name="TreeImage" Aspect="AspectFit" HorizontalOptions="FillAndExpand" Margin=" 0, 0, 0, 50" HeightRequest="200"></Image>
+        <Label Text="Welcome to the tree register page" TextColor="DodgerBlue" HorizontalOptions="Center" FontSize="24" Margin="0,0,0,-5"/>
+        <Label Text="For registring a tree you need to complete the following steps:  &#10;" TextColor="IndianRed" Margin="0,0,0,-10"></Label>
+        <Label TextColor="DodgerBlue" Text="- Take or choose a picture of the tree&#10;- Scan the barcode to register the tree to this barcode&#10;- Choose which type of three this is&#10;"></Label>
+
+
+
+        <Button Text="Register a new tree" Command="{Binding NavigateToTakePictureCommand}"/>
+    </StackLayout>
+</ContentPage>

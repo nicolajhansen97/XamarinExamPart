@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:XamarinExamPart.Views"
+            x:Class="XamarinExamPart.Views.MainMenu">
+
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Text="add" Command="{Binding NewTreeCommand}" IconImageSource="ic_action_add.png"/>
+    </TabbedPage.ToolbarItems>
+
+    <local:HomePage Title="Home" IconImageSource="ic_action_home.png"/>
+    <local:TreeHistory Title="Plants" IconImageSource="ic_action_nature.png"/>
+</TabbedPage>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinExamPart.Views.CameraPage">
+    <ContentPage.Content>
+        <StackLayout  Margin="15">
+            <Button Command="{Binding PickImageCommand}" Text="Choose Image from Camera Roll"></Button>
+            <Button Command="{Binding TakeImageCommand}" Text="Take Image"></Button>
+            <Image Source="{Binding ImageSourceString}" HeightRequest="300" Margin="0,15,0,0"></Image>
+            <Label Text="{Binding PictureText}" TextColor="IndianRed" HorizontalOptions="Center" Margin="0,30,0,0"></Label>
+            <Button Text="Next" Command="{Binding ChangeToBarcodeCommand}" IsEnabled="{Binding NextEnabled}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

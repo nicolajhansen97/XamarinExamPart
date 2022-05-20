@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "662683171864",
+    "project_id": "xamarin4thsemesterexam",
+    "storage_bucket": "xamarin4thsemesterexam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662683171864:android:702ce3112baf6d3154d76d",
+        "android_client_info": {
+          "package_name": "com.companyname.xamarinexampart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "662683171864-3dj0ads4pc04t97f4p4gg7lsj6vrua58.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTOdYyLszL_pZoqpMbVxeEPrFILSaCdok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "662683171864-3dj0ads4pc04t97f4p4gg7lsj6vrua58.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
