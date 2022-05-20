@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using XamarinExamPart.Helpers;
 using XamarinExamPart.Views;
 
+//Made by Nicolaj
 namespace XamarinExamPart.ViewModels
 {
     class LoginViewModel : BaseViewModel
@@ -49,15 +50,15 @@ namespace XamarinExamPart.ViewModels
 
         }
 
+        //Changes the view
         async void ChangeToRegisterPage()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage());
         }
 
+        //This handles the login. First we  check if the is any empty Entries, if not then we call LoginUser and wait for the result. If it return true, we are logged in and we change view.
         async void Login()
         {
-           bool isUserNameEntry = string.IsNullOrEmpty(UsernameEntry);
-           bool isPasswordEntry = string.IsNullOrEmpty(PasswordEntry);
 
             if(string.IsNullOrEmpty(UsernameEntry) || string.IsNullOrEmpty(PasswordEntry))
             {

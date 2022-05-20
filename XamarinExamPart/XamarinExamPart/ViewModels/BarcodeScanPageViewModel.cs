@@ -6,8 +6,9 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using ZXing.Net.Mobile.Forms;
 
-namespace XamarinExamPart.ViewModels
 
+//Made by Nicolaj
+namespace XamarinExamPart.ViewModels
 {
     class BarcodeScanPageViewModel : BaseViewModel
     {
@@ -38,11 +39,13 @@ namespace XamarinExamPart.ViewModels
             NavigateToInformationCommand = new Command(NavigateToInformation);
         }
 
+        //Changes the view.
         async void NavigateToInformation()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new AdditonalTreeInformationPage());
         }
 
+        //Uses the Zxing Nugget Package for scanning barcodes. This return a barcode, if a barcode is scanned.
         async void scan()
         {
 

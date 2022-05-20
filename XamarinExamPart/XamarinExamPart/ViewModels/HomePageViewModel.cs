@@ -4,6 +4,7 @@ using System.Text;
 
 namespace XamarinExamPart.ViewModels
 {
+    //Made by Nicolaj
     class HomePageViewModel
     {
     }
