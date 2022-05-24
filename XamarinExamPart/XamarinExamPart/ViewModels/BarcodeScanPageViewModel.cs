@@ -32,21 +32,24 @@ namespace XamarinExamPart.ViewModels
             set { isNextEnabled = value; OnPropertyChanged(); }
         }
 
+        public string PlaneBarcode { get; set; }
+
 
         public BarcodeScanPageViewModel()
         {
-            ScanBarcodeCommand = new Command(scan);
+            ScanBarcodeCommand = new Command(Scan);
             NavigateToInformationCommand = new Command(NavigateToInformation);
         }
 
         //Changes the view.
         async void NavigateToInformation()
         {
+            BaseViewModelBarcodeHolder = PlaneBarcode;
             await Application.Current.MainPage.Navigation.PushAsync(new AdditonalTreeInformationPage());
         }
 
         //Uses the Zxing Nugget Package for scanning barcodes. This return a barcode, if a barcode is scanned.
-        async void scan()
+        async void Scan()
         {
 
             var scan = new ZXingScannerPage();
@@ -55,6 +58,7 @@ namespace XamarinExamPart.ViewModels
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
+                    PlaneBarcode = result.ToString();
                     BarcodeText = "You scanned the following Barcode: " + result.ToString();
                   
                     if(result != null)

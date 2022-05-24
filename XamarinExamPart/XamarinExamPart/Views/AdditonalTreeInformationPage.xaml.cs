@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamarinExamPart.ViewModels;
 
 namespace XamarinExamPart.Views
 {
@@ -15,6 +16,7 @@ namespace XamarinExamPart.Views
         public AdditonalTreeInformationPage()
         {
             InitializeComponent();
+            this.BindingContext = new AdditionalTreeInformationPageViewModel();
         }
     }
 }

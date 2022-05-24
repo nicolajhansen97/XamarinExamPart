@@ -8,11 +8,15 @@ namespace XamarinExamPart.Models
     public class TreeModel
     {
         public int id { get; set; } //Primary key, add this when we force this to db.
-        public TreeType whichTreeType { get; set; } //Which treetype, use TreeType as class, which is an Enum with the different trees.
+        public string whichTreeType { get; set; } 
 
         public string image { get; set; }
         public string barcode { get; set; }
-     
+        public string temperatureAlert { get; set; }
+        public string humidityAlert { get; set; }
+
+        public string userId { get; set; }
+
     }
 
   

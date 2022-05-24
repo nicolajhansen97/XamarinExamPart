@@ -18,7 +18,7 @@ namespace XamarinExamPart.Views
             var assembly = typeof(RegisterPage);
 
             InitializeComponent();
-            iconImage.Source = ImageSource.FromResource("XamarinExamPart.Assets.Images.OlivenTree.png", assembly);
+            iconImage.Source = ImageSource.FromResource("XamarinExamPart.Assets.Images.Gard.png", assembly);
             this.BindingContext = new RegisterViewModel();
         }
     }

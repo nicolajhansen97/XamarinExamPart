@@ -5,12 +5,13 @@ using System.Text;
 namespace XamarinExamPart.Models
 {
     //Made by Nicolaj
-    public class TreeType
+    public class TreeSort
     {
+        public string TypeOfTree { get; set; }
     }
 
     //Our Enum with the different tree sorts.
-    public enum TreeSort
+    public enum TreetypeENum
     {
         Oliven,
         Ahorn,

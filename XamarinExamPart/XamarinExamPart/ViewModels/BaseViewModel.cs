@@ -9,6 +9,9 @@ namespace XamarinExamPart.ViewModels
     //Made by Nicolaj - This page is for the OnPropertyChanged.
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
+        // public static SOMEKIND OF SAVE PICTURE?
+        public static string BaseViewModelBarcodeHolder = "";
+
         protected BaseViewModel()
         {
 
