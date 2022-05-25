@@ -9,38 +9,14 @@
 
         <Label Text="Choose which type of tree"
                FontSize="18"/>
-        
+
         <Picker Title="Press here to select the treetype"
                 ItemsSource="{Binding TreeList}"
                 ItemDisplayBinding="{Binding TypeOfTree}"
                 SelectedItem="{Binding SelectedTree}"
                 Margin="0,0,0,50"/>
 
-        <Label Text="Choose the temperature an alert schould start"
-               FontSize="18"/>
-
-        <Slider Minimum="0" 
-                Maximum="50" 
-                Value="{Binding CurrentAlertTemperature, Mode=TwoWay}"
-                BackgroundColor="CadetBlue"/>
-
-        <Label Text="{Binding TemperatureAlertText}"/>
-
-        <Label Text="Choose at what humiditypercent an alert schould start"
-               FontSize="18"
-               Margin="0,50,0,0"/>
-
-        <Slider Minimum="0" 
-                Maximum="100" 
-                Value="{Binding CurrentHumidityPercent, Mode=TwoWay}"
-                BackgroundColor="CadetBlue"/>
-
-
-        <Label Text="{Binding HumidityAlertText}"/>
-
-        <Button Text="Create tree" TextColor="IndianRed"
-                HorizontalOptions="CenterAndExpand" 
-                BackgroundColor="Transparent"
+        <Button Text="Create tree"
                 Command="{Binding CreateTreeCommand}"
                 Margin="0,50,0,0"/>
 

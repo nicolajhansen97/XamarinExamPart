@@ -57,7 +57,7 @@ namespace XamarinExamPart.ViewModels
             };
 */
            
-            await ApiHelper.SendData(trm);
+           var respons = await ApiHelper.SendData(trm); //Check after holiday, and handle messages according to the respons.
          //   await Application.Current.MainPage.Navigation.PushAsync(new MainMenu());
         }
 
