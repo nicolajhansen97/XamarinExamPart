@@ -17,7 +17,7 @@ namespace XamarinExamPart
 
             var assembly = typeof(LoginPage);
 
-            iconImage.Source = ImageSource.FromResource("XamarinExamPart.Assets.Images.OlivenTree.png", assembly);
+            iconImage.Source = ImageSource.FromResource("XamarinExamPart.Assets.Images.Gard.png", assembly);
             this.BindingContext = new LoginViewModel();
         }
     }

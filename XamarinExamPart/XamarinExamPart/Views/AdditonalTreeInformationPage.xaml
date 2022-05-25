@@ -2,11 +2,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinExamPart.Views.AdditonalTreeInformationPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="RICK ROLLED!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+    
+    <StackLayout
+        Margin="15"
+        VerticalOptions="Center">
+
+        <Label Text="Choose which type of tree"
+               FontSize="18"/>
+
+        <Picker Title="Press here to select the treetype"
+                ItemsSource="{Binding TreeList}"
+                ItemDisplayBinding="{Binding TypeOfTree}"
+                SelectedItem="{Binding SelectedTree}"
+                Margin="0,0,0,50"/>
+
+        <Button Text="Create tree"
+                Command="{Binding CreateTreeCommand}"
+                Margin="0,50,0,0"/>
+
+
+    </StackLayout>
+
 </ContentPage>

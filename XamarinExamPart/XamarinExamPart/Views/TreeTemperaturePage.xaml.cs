@@ -11,15 +11,12 @@ using XamarinExamPart.ViewModels;
 namespace XamarinExamPart.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RegisterPage : ContentPage
+    public partial class TreeTemperaturePage : ContentPage
     {
-        public RegisterPage()
+        public TreeTemperaturePage()
         {
-            var assembly = typeof(RegisterPage);
-
             InitializeComponent();
-            iconImage.Source = ImageSource.FromResource("XamarinExamPart.Assets.Images.Gard.png", assembly);
-            this.BindingContext = new RegisterViewModel();
+            this.BindingContext = new TreeTemperatureViewModel();
         }
     }
 }
