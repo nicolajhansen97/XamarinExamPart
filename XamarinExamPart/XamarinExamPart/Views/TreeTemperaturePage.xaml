@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinExamPart.Views.TreeTemperaturePage">
+    <StackLayout
+        Margin="15"
+        VerticalOptions="Center">
+
+        <Label Text="Here you set the minimum temperature. If the temperature around the plant, goes lower than this temperature an alert will start."
+               TextColor="IndianRed"
+               Margin="0,0,0,15"/>
+
+        <Slider Minimum="0" 
+                Maximum="50" 
+                ScaleY="2"
+                Value="{Binding MininumAlertTemperature, Mode=TwoWay}"
+                ThumbColor="Black"
+                BackgroundColor="Gray"/>
+
+        <Label Text="{Binding MinimumTemperatureAlertText}"
+               Margin="0,5,0,50"/>
+
+        <Label Text="Here you set the maximum temperature. If the temperature around the plant, goes higher than this temperature an alert will start."
+               TextColor="IndianRed"
+               Margin="0,0,0,15"/>
+
+        <Slider Minimum="0" 
+                Maximum="100" 
+                ScaleY="2"
+                Value="{Binding MaximumAlertTemperature, Mode=TwoWay}"
+                ThumbColor="Black"
+                BackgroundColor="Gray"/>
+
+
+        <Label Text="{Binding MaximumTemperatureAlertText}"
+               Margin="0,5,0,0"/>
+
+        <Button Text="Next"
+                Command="{Binding NavigateToHumidityPageCommand}"
+                Margin="0,50,0,0"/>
+
+
+    </StackLayout>
+
+</ContentPage>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinExamPart.Views.HumidityPercentPage">
+    <StackLayout
+        Margin="15"
+        VerticalOptions="Center">
+
+        <Label Text="Here you set the minimum humidity. If the humiditypercent around the plant, goes lower than this humiditypercent an alert will start."
+               TextColor="IndianRed"
+               Margin="0,0,0,15"/>
+
+        <Slider Minimum="0" 
+                Maximum="50" 
+                ScaleY="2"
+                Value="{Binding MininumAlertHumidity, Mode=TwoWay}"
+                ThumbColor="Black"
+                BackgroundColor="Gray"/>
+
+        <Label Text="{Binding MinimumHumidityAlertText}"
+               Margin="0,5,0,50"/>
+
+        <Label Text="Here you set the maximum humidity. If the humiditypercent around the plant, goes higher than this humiditypercent an alert will start."
+               TextColor="IndianRed"
+               Margin="0,0,0,15"/>
+
+        <Slider Minimum="0" 
+                Maximum="100" 
+                ScaleY="2"
+                Value="{Binding MaximumAlertHumidity, Mode=TwoWay}"
+                ThumbColor="Black"
+                BackgroundColor="Gray"/>
+
+
+        <Label Text="{Binding MaximumHumidityAlertText}"
+               Margin="0,5,0,0"/>
+
+        <Button Text="Next"
+                Command="{Binding NavigateToAdditionalInformationPageCommand}"
+                Margin="0,50,0,0"/>
+
+
+    </StackLayout>
+
+</ContentPage>

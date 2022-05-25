@@ -11,6 +11,10 @@ namespace XamarinExamPart.ViewModels
     {
         // public static SOMEKIND OF SAVE PICTURE?
         public static string BaseViewModelBarcodeHolder = "";
+        public static double BaseViewModelMinimumTemperature = 0;
+        public static double BaseViewModelMaximumTemperature = 0;
+        public static double BaseViewModelMinimumHumidity = 0;
+        public static double BaseViewModelMaximumHumidity = 0;
 
         protected BaseViewModel()
         {

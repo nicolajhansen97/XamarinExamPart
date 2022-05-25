@@ -12,6 +12,7 @@ namespace XamarinExamPart
             InitializeComponent();
 
             MainPage = new NavigationPage(new LoginPage());
+            //MainPage = new NavigationPage(new TreeTemperaturePage());
         }
 
         protected override void OnStart()

@@ -45,7 +45,7 @@ namespace XamarinExamPart.ViewModels
         async void NavigateToInformation()
         {
             BaseViewModelBarcodeHolder = PlaneBarcode;
-            await Application.Current.MainPage.Navigation.PushAsync(new AdditonalTreeInformationPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new TreeTemperaturePage());
         }
 
         //Uses the Zxing Nugget Package for scanning barcodes. This return a barcode, if a barcode is scanned.

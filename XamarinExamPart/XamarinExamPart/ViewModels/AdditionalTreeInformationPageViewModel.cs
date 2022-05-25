@@ -1,11 +1,15 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XamarinExamPart.Helpers;
 using XamarinExamPart.Models;
+using XamarinExamPart.Views;
 
 namespace XamarinExamPart.ViewModels
 {
@@ -16,39 +20,7 @@ namespace XamarinExamPart.ViewModels
 
         public TreeSort SelectedTree { get; set; }
 
-        private double currentAlertTemperature;
-
-        public double CurrentAlertTemperature
-        {
-            get { return currentAlertTemperature; }
-            set { currentAlertTemperature = value; OnPropertyChanged(); ChangeTemperatureText(value); }
-        }
-
-        private double currentHumidityPercent;
-
-        public double CurrentHumidityPercent
-        {
-            get { return currentHumidityPercent; }
-            set { currentHumidityPercent = value; OnPropertyChanged(); ChangeHumidityText(value); }
-        }
-
-        private string temperatureAlertText = "Choose the alert temperature for the plant";
-
-        public string TemperatureAlertText
-        {
-            get { return temperatureAlertText; }
-            set { temperatureAlertText = value; OnPropertyChanged(); }
-        }
-
-        private string humidityAlertText = "Choose the humiditypercent alert for the plant";
-
-        public string HumidityAlertText
-        {
-            get { return humidityAlertText; }
-            set { humidityAlertText = value; OnPropertyChanged(); }
-        }
-
-
+    
         public AdditionalTreeInformationPageViewModel()
         {
             CreateTreeCommand = new Command(CreateTree);
@@ -61,28 +33,36 @@ namespace XamarinExamPart.ViewModels
             };
         }
 
-       void ChangeTemperatureText(double temperature)
-        {
-            TemperatureAlertText = "The tempareturealert is now set to start at " + temperature + " degrees";
-        }
-
-        void ChangeHumidityText(double humidity)
-        {
-            HumidityAlertText = "The humidityalert is now set to start at " + humidity + "%";
-        }
-
-        void CreateTree()
+        async void CreateTree()
         {
             TreeModel trm = new TreeModel
             {
-                //id =
-                whichTreeType = SelectedTree.TypeOfTree,
-                //image = ??
-                barcode = BaseViewModelBarcodeHolder,
-                temperatureAlert = CurrentAlertTemperature.ToString(),
-                humidityAlert = CurrentHumidityPercent.ToString(),
-                userId = Auth.GetCurrentUserId()
+                TreeType = SelectedTree.TypeOfTree,
+                HumidityMin = BaseViewModelMinimumHumidity,
+                HumidityMax = BaseViewModelMaximumHumidity,
+                TempMin = BaseViewModelMinimumTemperature,
+                TempMax = BaseViewModelMaximumTemperature,
+                UserId = Auth.GetCurrentUserId(),
+                BarCode = BaseViewModelBarcodeHolder
+                //image = ?? Tilføj, men how
             };
+/*
+
+            TestModel tm = new TestModel
+            {
+                no = 56,
+                name = "Nicolaj",
+                price = 99,
+                barCode = "000000200000"
+            };
+*/
+           
+            await ApiHelper.SendData(trm);
+         //   await Application.Current.MainPage.Navigation.PushAsync(new MainMenu());
         }
+
+
+
+
     }
 }
