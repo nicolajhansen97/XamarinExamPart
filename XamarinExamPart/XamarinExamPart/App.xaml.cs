@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamarinExamPart.Helpers;
 using XamarinExamPart.Views;
 
 namespace XamarinExamPart
@@ -12,6 +13,7 @@ namespace XamarinExamPart
             InitializeComponent();
 
             MainPage = new NavigationPage(new LoginPage());
+            ApiHelper.InitializeClient(); //IntializeClient
             //MainPage = new NavigationPage(new TreeTemperaturePage());
         }
 

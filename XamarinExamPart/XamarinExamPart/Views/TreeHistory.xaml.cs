@@ -18,5 +18,7 @@ namespace XamarinExamPart.Views
             InitializeComponent();
             this.BindingContext = new TreeHistoryViewModel();
         }
+
+
     }
 }

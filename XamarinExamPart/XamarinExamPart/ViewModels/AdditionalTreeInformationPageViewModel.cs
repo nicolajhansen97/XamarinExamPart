@@ -57,8 +57,15 @@ namespace XamarinExamPart.ViewModels
             };
 */
            
-           var respons = await ApiHelper.SendData(trm); //Check after holiday, and handle messages according to the respons.
-         //   await Application.Current.MainPage.Navigation.PushAsync(new MainMenu());
+           var respons = await ApiHelper.CreateTreeAsync(trm); //Check after holiday, and handle messages according to the respons.
+            if((int)respons.StatusCode == 201)
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new MainMenu());
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "An error has accured: " +  respons.StatusCode, "Ok");
+            }
         }
 
 
