@@ -22,12 +22,15 @@ namespace XamarinExamPart.ViewModels
         }
         public TreeHistoryViewModel()
         {
+
+            //This can do security issues, please fix later.
            // if(TreeList.Count == 0)
            // { 
             Task.Run(async () => await getTrees());
          //   }
         }
 
+        //Gets the trees from a http call to the middleware. It deserialize it to our object.
         async Task getTrees()
         {
             try {

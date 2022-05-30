@@ -9,16 +9,18 @@ using System.Threading.Tasks;
 using XamarinExamPart.Models;
 using XamarinExamPart.ViewModels;
 
+//Made by Nicolaj
 namespace XamarinExamPart.Helpers
 {
     class ApiHelper
     {
-
-        // public static string serverUrl = "http://10.176.132.158:3000/api/";
+        //Constants, so we only change it once if the IP changes.
+        // public static string serverUrl = "http://10.176.132.158:3000/api/"; //School
         public static string serverUrl = "http://192.168.0.12:3000/api/";
         public static string trees = "trees";
         public static HttpClient client { get; set; }
 
+        //Intialize the client, we dont want to do this every time. Now we intialize it once, call it from App.
         public static void InitializeClient()
         {
             client = new HttpClient();
@@ -27,6 +29,7 @@ namespace XamarinExamPart.Helpers
 
         }
 
+        //Create the tree async. Makes it JSON and post it to the middleware through Httpclient.
         public static async Task<HttpResponseMessage> CreateTreeAsync(TreeModel trm)
         {
             string serializedObject = JsonConvert.SerializeObject(trm);
@@ -48,6 +51,7 @@ namespace XamarinExamPart.Helpers
             }
         }
 
+        //Gets the tree async. Calls the middleware through HTTP and returns the response.
         public static async Task<HttpResponseMessage> GetTreesAsync()
         {
             try

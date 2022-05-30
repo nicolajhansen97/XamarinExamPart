@@ -11,6 +11,8 @@ using XamarinExamPart.Helpers;
 using XamarinExamPart.Models;
 using XamarinExamPart.Views;
 
+
+//Made by Nicolaj
 namespace XamarinExamPart.ViewModels
 {
     class AdditionalTreeInformationPageViewModel : BaseViewModel
@@ -25,6 +27,7 @@ namespace XamarinExamPart.ViewModels
         {
             CreateTreeCommand = new Command(CreateTree);
 
+            //Our list of trees. The plan was Enum, but didnt seems to work in the Picker we use. We will check into this later.
             TreeList = new ObservableCollection<TreeSort>()
             {
                 new TreeSort { TypeOfTree = "Oliven" },
@@ -32,7 +35,9 @@ namespace XamarinExamPart.ViewModels
                 new TreeSort { TypeOfTree = "Birke" },
             };
         }
+        
 
+        //Creates the tree. Creates a object of the model, which we send through the HTTP call to the middleware.
         async void CreateTree()
         {
             TreeModel trm = new TreeModel
@@ -46,18 +51,9 @@ namespace XamarinExamPart.ViewModels
                 BarCode = BaseViewModelBarcodeHolder
                 //image = ?? Tilføj, men how
             };
-/*
 
-            TestModel tm = new TestModel
-            {
-                no = 56,
-                name = "Nicolaj",
-                price = 99,
-                barCode = "000000200000"
-            };
-*/
-           
-           var respons = await ApiHelper.CreateTreeAsync(trm); //Check after holiday, and handle messages according to the respons.
+           //If response is 201 we change the page, if its not 201 then we know its not created succesfully.
+           var respons = await ApiHelper.CreateTreeAsync(trm); 
             if((int)respons.StatusCode == 201)
             {
                 await Application.Current.MainPage.Navigation.PushAsync(new MainMenu());
