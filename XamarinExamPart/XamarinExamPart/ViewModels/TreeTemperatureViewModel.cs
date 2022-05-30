@@ -5,6 +5,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using XamarinExamPart.Views;
 
+//Made by Nicolaj
 namespace XamarinExamPart.ViewModels
 {
     class TreeTemperatureViewModel : BaseViewModel

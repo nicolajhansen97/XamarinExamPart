@@ -3,10 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinExamPart.Views.TreeHistory">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="HERE WE WILL SHOW ALL YOUR TRESS - IN PRODUCTION LATER"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+       
+            <ListView HasUnevenRows="True" SeparatorVisibility="Default" Margin="20, 0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding TreeList}">
+                <ListView.ItemTemplate>
+                    
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                               
+
+                                <Label Text="{Binding No, StringFormat='ID: {0}'}" FontAttributes="Bold"></Label>
+                                <Label Grid.Row="1" Text="{Binding TempMin, StringFormat='Min temp: {0}'}" TextColor="DodgerBlue"></Label>
+                        
+                                <Label Grid.Column="1" Text="{Binding TreeType}"></Label>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding TempMax, StringFormat='Max temp: {0}'}" TextColor="Red"></Label>
+                            <Label Grid.Row="2" Grid.Column="0" Text="{Binding HumidityMax, StringFormat='Min humidity: {0}'}" TextColor="DodgerBlue"></Label>
+                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding HumidityMax, StringFormat='Max humidity: {0}'}" TextColor="Red"></Label>
+                            <Label Grid.Row="3" Text="{Binding BarCode, StringFormat='Barcode: {0}'}" FontAttributes="Bold"></Label>
+
+                        </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+     
     </ContentPage.Content>
 </ContentPage>

@@ -8,7 +8,7 @@ namespace XamarinExamPart.Models
     //Made by Nicolaj
     public class TreeModel
     {
-        public int id { get; set; } //Primary key, add this when we force this to db.
+        public int No { get; set; } //Primary key, add this when we force this to db.
         public string TreeType { get; set; } 
       //  public ImageSource image { get; set; }
       public String ImagePath { get; set; }
