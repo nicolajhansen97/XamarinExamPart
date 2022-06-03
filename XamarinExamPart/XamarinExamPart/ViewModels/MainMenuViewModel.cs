@@ -21,5 +21,6 @@ namespace XamarinExamPart.ViewModels
         {
             await Application.Current.MainPage.Navigation.PushAsync(new NewTree());
         }
+
     }
 }

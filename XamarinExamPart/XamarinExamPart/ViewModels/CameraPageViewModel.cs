@@ -69,6 +69,7 @@ namespace XamarinExamPart.ViewModels
                 PictureText = "Do you like this picture? Then go the next page!";
                 var stream = await result.OpenReadAsync();
                 ImageSourceString = ImageSource.FromStream(() => stream);
+                BaseViewModelImage = ImageSourceString;
             }
 
         }
@@ -84,6 +85,7 @@ namespace XamarinExamPart.ViewModels
                 PictureText = "Do you like this picture? Then go the next page!";
                 var stream = await result.OpenReadAsync();
                 ImageSourceString = ImageSource.FromStream(() => stream);
+                BaseViewModelImage = ImageSourceString;
             }
         }
     }
