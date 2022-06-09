@@ -10,6 +10,7 @@ using XamarinExamPart.Models;
 using XamarinExamPart.Helpers;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Linq;
 
 
 //Made by Nicolaj
@@ -23,6 +24,8 @@ namespace XamarinExamPart.ViewModels
             get { return deviceList; }
             set { deviceList = value; OnPropertyChanged(); }
         }
+
+        public List<TreeModel> BarCodeList = new List<TreeModel>();
 
         public ICommand ScanBarcodeCommand { get; set; }
         public ICommand NavigateToInformationCommand { get; set; }
@@ -44,7 +47,8 @@ namespace XamarinExamPart.ViewModels
             set { isNextEnabled = value; OnPropertyChanged(); }
         }
 
-        public string PlaneBarcode { get; set; }
+        public string PlaneBarcode = "";
+        public bool IsUsed;
 
 
         public BarcodeScanPageViewModel()
@@ -56,22 +60,37 @@ namespace XamarinExamPart.ViewModels
         //Changes the view.
         async void NavigateToInformation()
         {
+            IsUsed = false;
+
             await getDevices();
+            BarCodeList.Clear();
+            BarCodeList = BarcodesCollectionSingleton.getInstance().ToList();
 
             foreach (var device in DeviceList)
             {
                 if(PlaneBarcode == device.BarCode)
                 {
-                    BaseViewModelBarcodeHolder = PlaneBarcode;
-                    isBarCodeEligle = true;
-                    await Application.Current.MainPage.Navigation.PushAsync(new TreeTemperaturePage());
-                    break;
+                    foreach (var barcode in BarCodeList)
+                    {
+                        if(PlaneBarcode == barcode.BarCode)
+                        {
+                            IsUsed = true;
+                            break;
+                        }
+                    }
                 }
             }
 
-            if(isBarCodeEligle == false)
+            if (IsUsed == false)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "The barcode you scanned, is not connected to a device! Please try again or contact your system administrator!", "OK");
+                BaseViewModelBarcodeHolder = PlaneBarcode;
+                isBarCodeEligle = true;
+                await Application.Current.MainPage.Navigation.PushAsync(new TreeTemperaturePage());
+            }
+
+            if (isBarCodeEligle == false)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "The barcode you scanned, is not in the database or is allready paired! Please try again or contact your system administrator!", "OK");
             }
          }
 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using System.IO;
 
 //Made by Nicolaj
 namespace XamarinExamPart.ViewModels
@@ -69,7 +70,7 @@ namespace XamarinExamPart.ViewModels
                 PictureText = "Do you like this picture? Then go the next page!";
                 var stream = await result.OpenReadAsync();
                 ImageSourceString = ImageSource.FromStream(() => stream);
-                BaseViewModelImage = ImageSourceString;
+             //   BaseViewModelImage = ImageSourceString;
             }
 
         }
@@ -83,9 +84,21 @@ namespace XamarinExamPart.ViewModels
             {
                 NextEnabled = true;
                 PictureText = "Do you like this picture? Then go the next page!";
-                var stream = await result.OpenReadAsync();
-                ImageSourceString = ImageSource.FromStream(() => stream);
-                BaseViewModelImage = ImageSourceString;
+                //var stream = await result.OpenReadAsync();
+              //  ImageSourceString = ImageSource.FromStream(() => stream);
+
+                using (var stream = await result.OpenReadAsync())
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        stream.CopyTo(ms);
+
+                        BaseViewModelImage = ms.ToArray();
+                        ImageSourceString = ImageSource.FromStream(() => new MemoryStream(BaseViewModelImage));
+                    }
+                }
+
+                //BaseViewModelImage = ImageSourceString;
             }
         }
     }

@@ -4,9 +4,43 @@
              x:Class="XamarinExamPart.Views.HomePage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Here will your recent messages come - IN PRODUCTION LATER"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <ListView HasUnevenRows="True"
+                      SeparatorVisibility="Default" 
+                      Margin="20, 0" 
+                      HorizontalOptions="FillAndExpand" 
+                      VerticalOptions="FillAndExpand"
+                      ItemsSource="{Binding MessageList}"
+                      SelectedItem="{Binding SelectedMessage}">
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="1" Text="{Binding WarNo, StringFormat='Warning Number: {0}'}" TextColor="Red"></Label>
+                                <Label Grid.Row="2" Text="{Binding BarCode, StringFormat='Barcode: {0}'}" TextColor="DodgerBlue"></Label>
+                                <Label Grid.Row="3" Text="{Binding Warning, StringFormat='Warning: {0}'}" TextColor="Red"></Label>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Mark as handled"
+                    Command="{Binding MarkAsHandledCommand}"
+                    Margin="20,0,20,2"
+                    BackgroundColor="Green"/>
+            <Button Text="Check for new messages"
+                    Command="{Binding CheckForMessagesCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

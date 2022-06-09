@@ -37,6 +37,7 @@ namespace XamarinExamPart.ViewModels
             set { chartHum = value; OnPropertyChanged(); }
         }
 
+        private int NumberOfMeasurementsShownInGraph = 5;
 
         public ChartPageViewModel()
         {
@@ -54,13 +55,14 @@ namespace XamarinExamPart.ViewModels
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var measurementsToList = JsonConvert.DeserializeObject<List<MeasurementsModel>>(responseBody);
 
-                var sortedMeasurements = measurementsToList.FindAll((m) => m.Barcode == BaseViewModelTreeBarCode);
-                sortedMeasurements.ForEach((m) => MeasurementsList.Add(m));
+                var sortedMeasurements = measurementsToList.FindAll((m) => m.Treeno.Equals(BaseViewModelTreeNo));
+                var lastMeasurements = sortedMeasurements.OrderByDescending(x => x.DateOfMes).Take(NumberOfMeasurementsShownInGraph).OrderBy(x => x.DateOfMes).ToList();
+                lastMeasurements.ForEach((m) => MeasurementsList.Add(m));
 
                 ChartHelper cs = new ChartHelper();
-                ChartTemp = cs.CreateChart<MeasurementsModel>(sortedMeasurements, (m) => (float)m.Temperature, (m) => "ID: " + m.MeasuermentID.ToString());
+                ChartTemp = cs.CreateChart<MeasurementsModel>(lastMeasurements, (m) => (float)m.Temperature, (m) => "ID: " + m.MeasuermentID.ToString());
                 ChartHelper cs1 = new ChartHelper();
-                ChartHum = cs1.CreateChart<MeasurementsModel>(sortedMeasurements, (m) => (float)m.Humidity, (m) => "ID: " + m.MeasuermentID.ToString());
+                ChartHum = cs1.CreateChart<MeasurementsModel>(lastMeasurements, (m) => (float)m.Humidity, (m) => "ID: " + m.MeasuermentID.ToString());
 
 
             }

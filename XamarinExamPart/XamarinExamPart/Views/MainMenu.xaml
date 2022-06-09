@@ -4,6 +4,7 @@
             x:Class="XamarinExamPart.Views.MainMenu">
 
     <TabbedPage.ToolbarItems>
+        <ToolbarItem Text="scan" Command="{Binding ScanCommand}" IconImageSource="barcodewhite.png"/>
         <ToolbarItem Text="add" Command="{Binding NewTreeCommand}" IconImageSource="ic_action_add.png"/>
     </TabbedPage.ToolbarItems>
 

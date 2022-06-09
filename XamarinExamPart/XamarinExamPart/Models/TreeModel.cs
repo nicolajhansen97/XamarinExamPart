@@ -11,8 +11,8 @@ namespace XamarinExamPart.Models
     //Made by Nicolaj
     public class TreeModel : BaseViewModel
     {
-        public int No { get; set; } //Primary key, we only get this when we ask for trees.
-        public string TreeType { get; set; } 
+        public string No { get; set; }
+        public string TreeType { get; set; }
         public String ImagePath { get; set; }
         public string BarCode { get; set; }
         public double TempMin { get; set; }
@@ -21,9 +21,25 @@ namespace XamarinExamPart.Models
         public double HumidityMax { get; set; }
         public string UserId { get; set; }
 
+        public byte[] Picture;
+
+        private ImageSource pictureSource;
+        public ImageSource PictureSource
+        {
+            set
+            {
+                pictureSource = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return pictureSource;
+            }
+        }
+
+        /*
         private byte[] picture;
 
-        [JsonProperty]
         public byte[] Picture
         {
             get => picture;
@@ -34,7 +50,7 @@ namespace XamarinExamPart.Models
             }
         }
 
-        private ImageSource pictureSource = ImageSource.FromFile("emptypicture.png");
+        private ImageSource pictureSource;
         public ImageSource PictureSource
         {
             set
@@ -48,8 +64,9 @@ namespace XamarinExamPart.Models
             }
         }
     }
+        */
 
-   
 
+    }
   
 }

@@ -25,6 +25,13 @@ namespace XamarinExamPart.ViewModels
             set { treeList = value; OnPropertyChanged(); }
         }
 
+        private ObservableCollection<TreeModel> barcodeList = BarcodesCollectionSingleton.getInstance();
+        public ObservableCollection<TreeModel> BarcodeList
+        {
+            get { return barcodeList; }
+            set { barcodeList = value; OnPropertyChanged(); }
+        }
+
         private TreeModel selectedTree;
 
         public TreeModel SelectedTree
@@ -46,7 +53,7 @@ namespace XamarinExamPart.ViewModels
 
         async void ChangeToChartPage()
         {
-            BaseViewModelTreeBarCode = SelectedTree.BarCode;
+            BaseViewModelTreeNo = SelectedTree.No;
             await Application.Current.MainPage.Navigation.PushAsync(new ChartPage());
         }
 
@@ -65,6 +72,7 @@ namespace XamarinExamPart.ViewModels
             var sortedTrees = treesToList.FindAll((t) => t.UserId == Auth.GetCurrentUserId());
 
              sortedTrees.ForEach((t) => TreeList.Add(t));
+             treesToList.ForEach((b) => BarcodeList.Add(b));
 
             }
             catch(Exception e)
