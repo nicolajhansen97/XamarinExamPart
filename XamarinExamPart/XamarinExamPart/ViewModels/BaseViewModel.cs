@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Xamarin.Forms;
+using XamarinExamPart.Models;
 
 namespace XamarinExamPart.ViewModels
 {
     //Made by Nicolaj - This page is for the OnPropertyChanged.
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
-        // public static SOMEKIND OF SAVE PICTURE?
+        public static byte[] BaseViewModelImage;
         public static string BaseViewModelBarcodeHolder = "";
         public static double BaseViewModelMinimumTemperature = 0;
         public static double BaseViewModelMaximumTemperature = 0;
         public static double BaseViewModelMinimumHumidity = 0;
         public static double BaseViewModelMaximumHumidity = 0;
+
+        public static string BaseViewModelTreeNo;
 
         protected BaseViewModel()
         {

@@ -48,8 +48,8 @@ namespace XamarinExamPart.ViewModels
                 TempMin = BaseViewModelMinimumTemperature,
                 TempMax = BaseViewModelMaximumTemperature,
                 UserId = Auth.GetCurrentUserId(),
-                BarCode = BaseViewModelBarcodeHolder
-                //image = ?? Tilføj, men how
+                BarCode = BaseViewModelBarcodeHolder,
+               // Picture = BaseViewModelImage
             };
 
            //If response is 201 we change the page, if its not 201 then we know its not created succesfully.
