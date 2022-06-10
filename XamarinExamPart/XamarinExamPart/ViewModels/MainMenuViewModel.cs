@@ -85,7 +85,7 @@ namespace XamarinExamPart.ViewModels
 
                     await Application.Current.MainPage.DisplayAlert("Information", "Tree number: " + trm.No + "\n\nTree type: " + trm.TreeType + "\n\nBarcode: "
                         + trm.BarCode + "\n\nMininimum temperature: " + trm.TempMin + "\n\nMaximum temperature: " + trm.HumidityMax +
-                        "\n\nMininimum humidity: " + trm.HumidityMin + "\n\nMaximum humidity: " + trm.HumidityMax + "\n\nRasperry version: " + dm.RaspberryVer + "\n\nWorking: " + dm.Working, "Ok");
+                        "\n\nMininimum humidity: " + trm.HumidityMin + "\n\nMaximum humidity: " + trm.HumidityMax + "\n\nRaspberry version: " + dm.RaspberryVer + "\n\nWorking: " + dm.Working, "Ok");
                 }
             }
             catch (Exception e)
@@ -104,9 +104,6 @@ namespace XamarinExamPart.ViewModels
                 var response = await ApiHelper.GetDevicesAsync();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var deviceToList = JsonConvert.DeserializeObject<List<DeviceModel>>(responseBody);
-
-                //Find all that match the user id of the current user, we dont want to see trees for other gartners. 
-                //var sortedBarcodes = deviceToList.FindAll((d) => d.Ba == Auth.GetCurrentUserId());
 
                 deviceToList.ForEach((d) => DeviceList.Add(d));
 

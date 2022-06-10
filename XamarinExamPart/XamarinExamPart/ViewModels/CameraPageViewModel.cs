@@ -94,6 +94,9 @@ namespace XamarinExamPart.ViewModels
                         stream.CopyTo(ms);
 
                         BaseViewModelImage = ms.ToArray();
+
+
+
                         ImageSourceString = ImageSource.FromStream(() => new MemoryStream(BaseViewModelImage));
                     }
                 }
