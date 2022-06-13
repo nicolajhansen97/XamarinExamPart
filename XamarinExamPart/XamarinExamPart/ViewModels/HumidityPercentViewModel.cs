@@ -17,7 +17,7 @@ namespace XamarinExamPart.ViewModels
         public double MininumAlertHumidity
         {
             get { return mininumAlertHumidity; }
-            set { mininumAlertHumidity = value; OnPropertyChanged(); ChangeMinimumTemperatureText(value); }
+            set { mininumAlertHumidity = value; OnPropertyChanged(); ChangeMinimumHumidityText(value); }
         }
 
         private double maximumAlertHumidity;
@@ -25,7 +25,7 @@ namespace XamarinExamPart.ViewModels
         public double MaximumAlertHumidity
         {
             get { return maximumAlertHumidity; }
-            set { maximumAlertHumidity = value; OnPropertyChanged(); ChangeMaximumTemperatureText(value); }
+            set { maximumAlertHumidity = value; OnPropertyChanged(); ChangeMaximumHumidityText(value); }
         }
 
 
@@ -50,13 +50,15 @@ namespace XamarinExamPart.ViewModels
             NavigateToAdditionalInformationPageCommand = new Command(NavigateToHumidityPage);
         }
 
-        void ChangeMinimumTemperatureText(double humidity)
+        //Change the minimum humidity text.
+        void ChangeMinimumHumidityText(double humidity)
         {
             MinimumHumidityAlertText = "The minimum humidity is now set to " + humidity + "%";
             BaseViewModelMinimumHumidity = humidity;
         }
 
-        void ChangeMaximumTemperatureText(double humidity)
+        //Change the maximum humidity text.
+        void ChangeMaximumHumidityText(double humidity)
         {
             MaximumHumidityAlertText = "The maximum humidity is now set to " + humidity + "%";
             BaseViewModelMaximumHumidity = humidity;

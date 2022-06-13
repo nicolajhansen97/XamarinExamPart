@@ -10,7 +10,7 @@ namespace XamarinExamPart.Models
         public string TypeOfTree { get; set; }
     }
 
-    //Our Enum with the different tree sorts.
+    //Our Enum with the different tree sorts. Wont be used for now, we just use a list.
     public enum TreetypeENum
     {
         Oliven,

@@ -4,6 +4,7 @@ using System.Text;
 
 namespace XamarinExamPart.Models
 {
+    //Made by Nicolaj
     public class MeasurementsModel
     {
         public string Treeno { get; set; }

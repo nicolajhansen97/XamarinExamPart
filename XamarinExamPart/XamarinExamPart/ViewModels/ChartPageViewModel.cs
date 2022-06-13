@@ -44,6 +44,7 @@ namespace XamarinExamPart.ViewModels
             Task.Run(async () => await getMesurements());
         }
 
+        //Gets the measurements through http request, then wel sort it, order it, and find the 5 latest only.
         async Task getMesurements()
         {
             try

@@ -15,7 +15,7 @@ namespace XamarinExamPart.Helpers
     class ApiHelper
     {
         //Constants, so we only change it once if the IP changes.
-        public static string serverUrl = "http://10.176.132.159:3000/api/"; //School
+        public static string serverUrl = "http://10.176.164.47:3000/api/"; //School
        // public static string serverUrl = "http://192.168.0.12:3000/api/";
         public static string trees = "trees";
         public static string measurements = "Measuerment";
@@ -88,6 +88,9 @@ namespace XamarinExamPart.Helpers
                 return new HttpResponseMessage();
             }
         }
+
+
+        // gets the devices as async
         public static async Task<HttpResponseMessage> GetDevicesAsync()
         {
             try
@@ -104,6 +107,7 @@ namespace XamarinExamPart.Helpers
             }
         }
 
+        //Gets the messages through http request
         public static async Task<HttpResponseMessage> GetMessagesAsync()
         {
             try
@@ -120,6 +124,7 @@ namespace XamarinExamPart.Helpers
             }
         }
 
+        //Update the project through httprequest uses a messagemodel object as parameter
         public static async Task<MessageModel> UpdateProductAsync(MessageModel msm)
         {
 

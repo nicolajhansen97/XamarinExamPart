@@ -6,6 +6,7 @@ using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using System.IO;
+using FFImageLoading;
 
 //Made by Nicolaj
 namespace XamarinExamPart.ViewModels
@@ -94,8 +95,10 @@ namespace XamarinExamPart.ViewModels
                         stream.CopyTo(ms);
 
                         BaseViewModelImage = ms.ToArray();
+                       //BaseViewModelImage = stream.ToByteArray();
 
-
+                        var stream2 = await ImageService.Instance.LoadFile(result.FullPath).DownSample(width: 1, height: 1).AsPNGStreamAsync();
+                        BaseViewModelImage = stream2.ToByteArray();
 
                         ImageSourceString = ImageSource.FromStream(() => new MemoryStream(BaseViewModelImage));
                     }

@@ -45,6 +45,7 @@ namespace XamarinExamPart.ViewModels
             await Application.Current.MainPage.Navigation.PushAsync(new NewTree());
         }
 
+        //Handles the scan through a NugetPackage. Calls a Task which will show the data.
         async void Scan()
         {
 
@@ -61,6 +62,7 @@ namespace XamarinExamPart.ViewModels
             };
         }
 
+        //Checks if the barcode can be found and then shows the information about the paired tree.
         private async Task GetInformationAboutTree(string Barcode)
         {
             try
@@ -94,6 +96,7 @@ namespace XamarinExamPart.ViewModels
             }
         }
 
+        //Gets all the devices through httprequest
         async Task getDevices()
         {
             try
