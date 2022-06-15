@@ -125,7 +125,7 @@ namespace XamarinExamPart.ViewModels
                 msm.IsHandled = true;
 
 
-                var response = await ApiHelper.UpdateProductAsync(msm);
+                var response = await ApiHelper.UpdateMessageAsync(msm);
                 await RefreshMessageList();
              }
              catch (Exception e)

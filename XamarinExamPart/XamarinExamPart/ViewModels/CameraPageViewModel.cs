@@ -97,7 +97,7 @@ namespace XamarinExamPart.ViewModels
                         BaseViewModelImage = ms.ToArray();
                        //BaseViewModelImage = stream.ToByteArray();
 
-                        var stream2 = await ImageService.Instance.LoadFile(result.FullPath).DownSample(width: 1, height: 1).AsPNGStreamAsync();
+                        var stream2 = await ImageService.Instance.LoadFile(result.FullPath).DownSample(width: 500, height: 500).AsPNGStreamAsync();
                         BaseViewModelImage = stream2.ToByteArray();
 
                         ImageSourceString = ImageSource.FromStream(() => new MemoryStream(BaseViewModelImage));

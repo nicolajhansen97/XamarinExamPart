@@ -57,7 +57,7 @@ namespace XamarinExamPart.ViewModels
             NavigateToInformationCommand = new Command(NavigateToInformation);
         }
 
-        //Changes the view.
+        //Changes the view. It also check if the barcode is used, if its used you can go further, as its allready paired.
         async void NavigateToInformation()
         {
             IsUsed = false;
@@ -90,7 +90,8 @@ namespace XamarinExamPart.ViewModels
 
             if (isBarCodeEligle == false)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "The barcode you scanned, is not in the database or is allready paired! Please try again or contact your system administrator!", "OK");
+                await Application.Current.MainPage.DisplayAlert("Error", "The barcode you scanned, is not in the database or is allready paired! " +
+                    "Please try again or contact your system administrator!", "OK");
             }
          }
 

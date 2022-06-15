@@ -57,7 +57,9 @@ namespace XamarinExamPart.ViewModels
                 var measurementsToList = JsonConvert.DeserializeObject<List<MeasurementsModel>>(responseBody);
 
                 var sortedMeasurements = measurementsToList.FindAll((m) => m.Treeno.Equals(BaseViewModelTreeNo));
-                var lastMeasurements = sortedMeasurements.OrderByDescending(x => x.DateOfMes).Take(NumberOfMeasurementsShownInGraph).OrderBy(x => x.DateOfMes).ToList();
+                var lastMeasurements = sortedMeasurements.OrderByDescending(x => x.DateOfMes).Take(NumberOfMeasurementsShownInGraph).
+                    OrderBy(x => x.DateOfMes).ToList();
+               
                 lastMeasurements.ForEach((m) => MeasurementsList.Add(m));
 
                 ChartHelper cs = new ChartHelper();
