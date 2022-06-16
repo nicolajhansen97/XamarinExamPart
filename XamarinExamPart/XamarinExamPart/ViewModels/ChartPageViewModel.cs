@@ -10,6 +10,7 @@ using XamarinExamPart.Helpers;
 using XamarinExamPart.Models;
 using Entry = Microcharts.ChartEntry;
 
+//Made by Nicolaj
 namespace XamarinExamPart.ViewModels
 {
     class ChartPageViewModel : BaseViewModel
@@ -62,6 +63,7 @@ namespace XamarinExamPart.ViewModels
                
                 lastMeasurements.ForEach((m) => MeasurementsList.Add(m));
 
+                //Creates the chart with temperature, and the measurements ID as parameters.
                 ChartHelper cs = new ChartHelper();
                 ChartTemp = cs.CreateChart<MeasurementsModel>(lastMeasurements, (m) => (float)m.Temperature, (m) => "ID: " + m.MeasuermentID.ToString());
                 ChartHelper cs1 = new ChartHelper();

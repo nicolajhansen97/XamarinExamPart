@@ -6,8 +6,10 @@ using Xunit;
 
 namespace TestingProejct
 {
+    //Made by Nicolaj
     public class UnitTest1
     {
+        //Here we test the connection, and sees if we are able to get any trees. If we are we expect status code 200.
         [Fact]
         public async void GetTreesConnectionTest()
         {
@@ -26,6 +28,7 @@ namespace TestingProejct
             Assert.Equal(200, (int)response.StatusCode);
         }
 
+        //Here we testing creating and a post request through HTTP. We try to create a tree, and exspect 201 as this is the succes code for posting.
         [Fact]
         public async void CreateTree()
         {
@@ -55,6 +58,7 @@ namespace TestingProejct
             Assert.Equal(201, (int)response.StatusCode);
         }
 
+        //Testing a unvalid link, then we exspect 404 as this HTTP request should not be allowed.
         [Fact]
         public async void CheckFails()
         {

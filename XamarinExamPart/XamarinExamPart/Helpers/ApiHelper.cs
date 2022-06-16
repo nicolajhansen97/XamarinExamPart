@@ -66,7 +66,7 @@ namespace XamarinExamPart.Helpers
                 return response;
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return new HttpResponseMessage();
             }
@@ -83,7 +83,7 @@ namespace XamarinExamPart.Helpers
                 return response;
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return new HttpResponseMessage();
             }
@@ -101,7 +101,7 @@ namespace XamarinExamPart.Helpers
                 return response;
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return new HttpResponseMessage();
             }
@@ -118,7 +118,7 @@ namespace XamarinExamPart.Helpers
                 return response;
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return new HttpResponseMessage();
             }
