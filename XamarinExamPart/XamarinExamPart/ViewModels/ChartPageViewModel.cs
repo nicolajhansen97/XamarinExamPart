@@ -10,6 +10,7 @@ using XamarinExamPart.Helpers;
 using XamarinExamPart.Models;
 using Entry = Microcharts.ChartEntry;
 
+//Made by Nicolaj
 namespace XamarinExamPart.ViewModels
 {
     class ChartPageViewModel : BaseViewModel
@@ -44,6 +45,7 @@ namespace XamarinExamPart.ViewModels
             Task.Run(async () => await getMesurements());
         }
 
+        //Gets the measurements through http request, then wel sort it, order it, and find the 5 latest only.
         async Task getMesurements()
         {
             try
@@ -56,9 +58,12 @@ namespace XamarinExamPart.ViewModels
                 var measurementsToList = JsonConvert.DeserializeObject<List<MeasurementsModel>>(responseBody);
 
                 var sortedMeasurements = measurementsToList.FindAll((m) => m.Treeno.Equals(BaseViewModelTreeNo));
-                var lastMeasurements = sortedMeasurements.OrderByDescending(x => x.DateOfMes).Take(NumberOfMeasurementsShownInGraph).OrderBy(x => x.DateOfMes).ToList();
+                var lastMeasurements = sortedMeasurements.OrderByDescending(x => x.DateOfMes).Take(NumberOfMeasurementsShownInGraph).
+                    OrderBy(x => x.DateOfMes).ToList();
+               
                 lastMeasurements.ForEach((m) => MeasurementsList.Add(m));
 
+                //Creates the chart with temperature, and the measurements ID as parameters.
                 ChartHelper cs = new ChartHelper();
                 ChartTemp = cs.CreateChart<MeasurementsModel>(lastMeasurements, (m) => (float)m.Temperature, (m) => "ID: " + m.MeasuermentID.ToString());
                 ChartHelper cs1 = new ChartHelper();

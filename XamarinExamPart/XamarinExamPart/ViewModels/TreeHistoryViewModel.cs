@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -67,12 +68,17 @@ namespace XamarinExamPart.ViewModels
             var response = await ApiHelper.GetTreesAsync();
             string responseBody = await response.Content.ReadAsStringAsync();
             var treesToList = JsonConvert.DeserializeObject<List<TreeModel>>(responseBody);
+  
 
             //Find all that match the user id of the current user, we dont want to see trees for other gartners. 
             var sortedTrees = treesToList.FindAll((t) => t.UserId == Auth.GetCurrentUserId());
 
+             sortedTrees.ForEach((t) => t.PictureSource = t.PictureSource = ImageSource.FromStream(() => new MemoryStream(t.Image)));
              sortedTrees.ForEach((t) => TreeList.Add(t));
              treesToList.ForEach((b) => BarcodeList.Add(b));
+
+            
+
 
             }
             catch(Exception e)

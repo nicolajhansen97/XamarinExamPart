@@ -48,6 +48,8 @@ namespace XamarinExamPart.ViewModels
 
         }
 
+        //This will refresh the messagelist through httpreuqest. It only shows the messages which hasnt been handled. This is only called
+        // first time the page is showed, the void RefreshMessageList will handle the button.
         async Task RefreshMessageList()
         {
                 try
@@ -77,6 +79,8 @@ namespace XamarinExamPart.ViewModels
                 }
         }
 
+        //This will be called, when the button is pressed. A task couldnt be used with an ICommand, so we made a void version to fix this.
+        //We know this isnt the best solution, but we was a bit in time need.
         async void RefreshMessageListVoid()
         {
             try
@@ -106,6 +110,7 @@ namespace XamarinExamPart.ViewModels
             }
         }
 
+        //This will change the message to handled through httprequest, so it wont be shown on the list anymore.
         async void MarkAsHandled()
         {
            
@@ -120,7 +125,7 @@ namespace XamarinExamPart.ViewModels
                 msm.IsHandled = true;
 
 
-                var response = await ApiHelper.UpdateProductAsync(msm);
+                var response = await ApiHelper.UpdateMessageAsync(msm);
                 await RefreshMessageList();
              }
              catch (Exception e)

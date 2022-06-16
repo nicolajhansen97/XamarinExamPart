@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using XamarinExamPart.Models;
 
+//Made by Nicolaj
 namespace XamarinExamPart.Helpers
 {
    

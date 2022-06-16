@@ -49,6 +49,7 @@ namespace XamarinExamPart.ViewModels
 
         public string PlaneBarcode = "";
         public bool IsUsed;
+        public bool DeviceExist;
 
 
         public BarcodeScanPageViewModel()
@@ -57,10 +58,12 @@ namespace XamarinExamPart.ViewModels
             NavigateToInformationCommand = new Command(NavigateToInformation);
         }
 
-        //Changes the view.
+        //Changes the view. It also check if the barcode is used, if its used you can go further, as its allready paired.
         async void NavigateToInformation()
         {
             IsUsed = false;
+            DeviceExist = true;
+            isBarCodeEligle = false;
 
             await getDevices();
             BarCodeList.Clear();
@@ -68,33 +71,38 @@ namespace XamarinExamPart.ViewModels
 
             foreach (var device in DeviceList)
             {
-                if(PlaneBarcode == device.BarCode)
+                if (PlaneBarcode == device.BarCode)
                 {
+                    isBarCodeEligle = true;
                     foreach (var barcode in BarCodeList)
                     {
-                        if(PlaneBarcode == barcode.BarCode)
+                        if (PlaneBarcode == barcode.BarCode)
                         {
                             IsUsed = true;
+                            isBarCodeEligle = false;
                             break;
                         }
                     }
                 }
             }
+            if (isBarCodeEligle == false)
+            {
+                DeviceExist = false;
+                await Application.Current.MainPage.DisplayAlert("Error", "The barcode you scanned, is not in the database or is allready paired! " +
+                    "Please try again or contact your system administrator!", "OK");
+            }
 
-            if (IsUsed == false)
+            if (IsUsed == false && DeviceExist)
             {
                 BaseViewModelBarcodeHolder = PlaneBarcode;
                 isBarCodeEligle = true;
                 await Application.Current.MainPage.Navigation.PushAsync(new TreeTemperaturePage());
             }
+        }
 
-            if (isBarCodeEligle == false)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "The barcode you scanned, is not in the database or is allready paired! Please try again or contact your system administrator!", "OK");
-            }
-         }
-
+        //Gets all the devices and add them to a list.
         async Task getDevices()
+
         {
             try
             {
@@ -104,9 +112,6 @@ namespace XamarinExamPart.ViewModels
                 var response = await ApiHelper.GetDevicesAsync();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 var deviceToList = JsonConvert.DeserializeObject<List<DeviceModel>>(responseBody);
-
-                //Find all that match the user id of the current user, we dont want to see trees for other gartners. 
-                //var sortedBarcodes = deviceToList.FindAll((d) => d.Ba == Auth.GetCurrentUserId());
 
                 deviceToList.ForEach((d) => DeviceList.Add(d));
 

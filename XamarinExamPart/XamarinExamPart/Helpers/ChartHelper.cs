@@ -7,6 +7,8 @@ using System.Linq;
 
 namespace XamarinExamPart.Helpers
 {
+
+    //Made by Nicolaj
     public class ChartHelper
     {
 
@@ -14,12 +16,15 @@ namespace XamarinExamPart.Helpers
         {
             var entries = new List<ChartEntry>();
 
+            //For each item of the data, it should add a new ChartEntry
             data.ToList().ForEach(item => entries.Add(new ChartEntry(value(item))
             {
                 Label = label(item),
                 ValueLabel = value(item).ToString()
             }));
 
+
+            //Sets the different things on the chart. 
             var chart = new LineChart { Entries = entries };
             chart.LabelOrientation = Orientation.Horizontal;
             chart.ValueLabelOrientation = Orientation.Horizontal;

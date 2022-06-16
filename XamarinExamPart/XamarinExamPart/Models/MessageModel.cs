@@ -4,6 +4,8 @@ using System.Text;
 
 namespace XamarinExamPart.Models
 {
+    
+    //Made by Nicolaj
     public class MessageModel
     {
         public string WarNo { get; set; }

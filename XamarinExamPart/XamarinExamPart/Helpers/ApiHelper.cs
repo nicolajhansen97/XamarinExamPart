@@ -15,9 +15,9 @@ namespace XamarinExamPart.Helpers
     class ApiHelper
     {
         //Constants, so we only change it once if the IP changes.
-        public static string serverUrl = "http://10.176.164.241:3000/api/"; //School
+        public static string serverUrl = "http://10.176.132.158:3000/api/"; //School
        // public static string serverUrl = "http://192.168.0.12:3000/api/";
-        public static string trees = "trees";
+        public static string trees = "Trees";
         public static string measurements = "Measuerment";
         public static string devices = "Device";
         public static string messages = "Warning";
@@ -49,7 +49,7 @@ namespace XamarinExamPart.Helpers
             {
                 throw;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return new HttpResponseMessage();
             }
@@ -66,7 +66,7 @@ namespace XamarinExamPart.Helpers
                 return response;
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return new HttpResponseMessage();
             }
@@ -83,11 +83,14 @@ namespace XamarinExamPart.Helpers
                 return response;
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return new HttpResponseMessage();
             }
         }
+
+
+        // gets the devices as async
         public static async Task<HttpResponseMessage> GetDevicesAsync()
         {
             try
@@ -98,12 +101,13 @@ namespace XamarinExamPart.Helpers
                 return response;
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return new HttpResponseMessage();
             }
         }
 
+        //Gets the messages through http request
         public static async Task<HttpResponseMessage> GetMessagesAsync()
         {
             try
@@ -114,13 +118,14 @@ namespace XamarinExamPart.Helpers
                 return response;
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return new HttpResponseMessage();
             }
         }
 
-        public static async Task<MessageModel> UpdateProductAsync(MessageModel msm)
+        //Update the project through httprequest uses a messagemodel object as parameter
+        public static async Task<MessageModel> UpdateMessageAsync(MessageModel msm)
         {
 
             string serializedObject = JsonConvert.SerializeObject(msm);

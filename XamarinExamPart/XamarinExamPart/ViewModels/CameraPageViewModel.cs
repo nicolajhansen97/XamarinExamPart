@@ -6,6 +6,7 @@ using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using System.IO;
+using FFImageLoading;
 
 //Made by Nicolaj
 namespace XamarinExamPart.ViewModels
@@ -94,6 +95,13 @@ namespace XamarinExamPart.ViewModels
                         stream.CopyTo(ms);
 
                         BaseViewModelImage = ms.ToArray();
+                       //BaseViewModelImage = stream.ToByteArray();
+
+                        //We down sample the image, to make the byte array less, so we able to post it to Mongoose.
+                        var stream2 = await ImageService.Instance.LoadFile(result.FullPath).DownSample(width: 500, height: 500).AsPNGStreamAsync();
+                        BaseViewModelImage = stream2.ToByteArray();
+
+                        //Convert it to ImageSource.
                         ImageSourceString = ImageSource.FromStream(() => new MemoryStream(BaseViewModelImage));
                     }
                 }

@@ -57,6 +57,9 @@
     <PackageReference Include="Microcharts.Forms">
       <Version>0.9.5.9</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Forms">
+      <Version>2.4.11.982</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Firebase.Auth">
       <Version>121.0.1.4</Version>
     </PackageReference>

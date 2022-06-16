@@ -50,12 +50,14 @@ namespace XamarinExamPart.ViewModels
             NavigateToHumidityPageCommand = new Command(NavigateToHumidityPage);
         }
 
+        //Change the minimum temperature text
         void ChangeMinimumTemperatureText(double temperature)
         {
             MinimumTemperatureAlertText = "The minimum temperature is now set to " + temperature + " degrees";
             BaseViewModelMinimumTemperature = temperature;
         }
 
+        //Change the maximum temperature text
         void ChangeMaximumTemperatureText(double temperature)
         {
             MaximumTemperatureAlertText = "The maximum temperature is now set to " + temperature + " degrees";

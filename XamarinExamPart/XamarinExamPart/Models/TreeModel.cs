@@ -21,7 +21,7 @@ namespace XamarinExamPart.Models
         public double HumidityMax { get; set; }
         public string UserId { get; set; }
 
-        public byte[] Picture;
+        public byte[] Image;
 
         private ImageSource pictureSource;
         public ImageSource PictureSource
